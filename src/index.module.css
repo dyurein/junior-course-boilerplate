@@ -20,6 +20,13 @@ ul {
   padding: 0;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 960px;
+}
+
 .goods {
   display: flex;
   justify-content: center;

@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import data from './products';
+import ProductPage from './pages/products';
+import s from './index.module.css';
 
-function App() {
+
+const App = () => {
     return (
-        <div className="goods">
-            <h1 className="goods__title">Список товаров</h1>
-            <ul className="goods__list">
-            {data.slice(0, 3).map((link)=> 
-                <li className="goods__item" key={link.id}>
-                    <a className="goods__item-link" href="#">
-                        {link.name}
-                    </a>
-                </li>
-            )}
-            </ul>
+        <div className={s.wrapper}>
+            <ProductPage />
         </div>
     )
 }

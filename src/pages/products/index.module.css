@@ -1,0 +1,3 @@
+.productItem:not(:first-of-type) {
+  margin-left: 32px;
+}
