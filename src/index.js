@@ -8,13 +8,13 @@ function App() {
         <div className="goods">
             <h1 className="goods__title">Список товаров</h1>
             <ul className="goods__list">
-            {data.filter((link)=> link.id <= 3).map((link)=> 
+            {data.map((link)=> 
                 <li className="goods__item" key={link.id}>
                     <a className="goods__item-link" href="#">
                         {link.name}
                     </a>
                 </li>
-            )}
+            ).slice(0, 3)}
             </ul>
         </div>
     )
