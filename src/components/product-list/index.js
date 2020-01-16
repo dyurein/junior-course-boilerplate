@@ -1,4 +1,5 @@
 import React from 'react';
+import pt from 'prop-types';
 import s from './index.module.css';
 
 const ProductList = (props) => {
@@ -9,6 +10,10 @@ const ProductList = (props) => {
             </ul>
         </>
     )
+};
+
+ProductList.propTypes = {
+    children: pt.element.isRequired
 };
 
 export default ProductList;
