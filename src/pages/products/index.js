@@ -1,9 +1,10 @@
 import React from 'react';
-import PageTitle from '../../components/title';
 import ProductList from '../../components/product-list';
-import ProductItem from '../../components/product-card';
+import PageTitle from '../../components/title';
 import data from '../../products.json';
 import s from './index.module.css';
+import ProductItem from 'school-product-card';
+
 
 const ratingComponent = ({ isFilled }) => {
     return <div className={isFilled ? 'starFill' : undefined} />;
@@ -14,18 +15,19 @@ const ProductPage = () => {
         <>
             <PageTitle title={'Список товаров'}/>
             <ProductList>
-            {data.slice(0, 3).map((item)=>
-                <ProductItem isInStock={item.isInStock}
-                             img={item.imgProduct}
-                             title={item.name}
-                             key={item.id}
-                             price={item.price}
-                             subPriceContent={item.subPriceContent}
-                             maxRating={5}
-                             rating={4}
-                             ratingComponent={ratingComponent}
-                             className={s.productItem}
-              />
+            {data.map((item)=>
+                <div className={s.itemWrapper}>
+                    <ProductItem isInStock={item.isInStock}
+                                img={item.imgProduct}
+                                title={item.name}
+                                key={item.id}
+                                price={item.price}
+                                subPriceContent={item.subPriceContent}
+                                maxRating={5}
+                                rating={4}
+                                ratingComponent={ratingComponent}
+                    />
+                </div>
             )}
             </ProductList>
         </>

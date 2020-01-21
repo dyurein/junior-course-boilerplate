@@ -13,7 +13,7 @@ const ProductList = (props) => {
 };
 
 ProductList.propTypes = {
-    children: pt.element.isRequired
+    children: pt.node.isRequired
 };
 
 export default ProductList;
