@@ -1,26 +1,50 @@
 [
   {
     "id": 1,
-    "name": "Имя товара1"
+    "name": "Имя товара1",
+    "imgProduct": "https://cdn1.savepice.ru/uploads/2020/1/15/298b7598b3665fce60cbc4e4a2fae711-full.png",
+    "price": 2500,
+    "subPriceContent": 2000,
+    "isInStock": true
   },
   {
     "id": 2,
-    "name": "Имя товара2"
+    "name": "Имя товара2",
+    "imgProduct": "https://cdn1.savepice.ru/uploads/2020/1/15/bf999f121a5f0106e37c146d381bba7f-full.png",
+    "price": 3000,
+    "subPriceContent": 2000,
+    "isInStock": false
   },
   {
     "id": 3,
-    "name": "Имя товара3"
+    "name": "Имя товара3",
+    "imgProduct": "https://cdn1.savepice.ru/uploads/2020/1/15/62b11056bc0afec50c4db8e9222e490b-full.png",
+    "price": 5000,
+    "subPriceContent": 4000,
+    "isInStock": true
   },
   {
     "id": 4,
-    "name": "Имя товара4"
+    "name": "Имя товара4",
+    "imgProduct": "https://cdn1.savepice.ru/uploads/2020/1/15/a9a310a1b9d3e98a436457e4e2dfcdba-full.png",
+    "price": 5000,
+    "subPriceContent": 2000,
+    "isInStock": true
   },
   {
     "id": 5,
-    "name": "Имя товара5"
+    "name": "Имя товара5",
+    "imgProduct": "https://cdn1.savepice.ru/uploads/2020/1/15/fcd1ea091a8d6db4dac6b11a6866e765-full.png",
+    "price": 5000,
+    "subPriceContent": 2000,
+    "isInStock": true
   },
   {
     "id": 6,
-    "name": "Имя товара6"
+    "name": "Имя товара6",
+    "imgProduct": "https://cdn1.savepice.ru/uploads/2020/1/15/ef38ba0d7b6cb22eca8b3d54cb70e286-full.png",
+    "price": 5000,
+    "subPriceContent": 2000,
+    "isInStock": false
   }
 ]
