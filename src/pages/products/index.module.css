@@ -1,3 +1,4 @@
-.itemWrapper:not(:first-of-type) {
-  margin-left: 32px;
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
 }
