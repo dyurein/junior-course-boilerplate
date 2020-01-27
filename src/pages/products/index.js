@@ -19,7 +19,8 @@ class ProductPage extends React.Component {
                 <div className={s.contentWrapper}>
                     <PriceFilter
                         minPrice={this.props.minPrice}
-                        maxPrice={this.props.maxPrice}/>
+                        maxPrice={this.props.maxPrice}
+                        updatePriceFilter={this.props.updatePriceFilter}/>
                     <ProductList>
                         <List
                             minPrice={this.props.minPrice}

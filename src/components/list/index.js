@@ -15,6 +15,7 @@ class List extends LogRender {
 
     render() {
         const filteredProducts = products.filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice);
+        
         return (
             <>
             {filteredProducts.map((item, index) => 

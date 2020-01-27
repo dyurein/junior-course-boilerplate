@@ -2,12 +2,18 @@ import React from 'react';
 import pt from 'prop-types';
 import s from './index.module.css';
 
-const ProductList = (props) => {
-    return (
-        <ul className={s.productList}>
-            {props.children}
-        </ul>
-    )
+class ProductList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <ul className={s.productList}>
+                {this.props.children}
+            </ul>
+        )
+    }
 };
 
 ProductList.propTypes = {

@@ -17,12 +17,20 @@ class App extends React.Component {
         };
     }
 
+    updatePriceFilter = (minPrice, maxPrice) => {
+        this.setState({
+            minPrice: minPrice,
+            maxPrice: maxPrice
+        })
+    };
+
     render() {
         return (
             <div className={s.wrapper}>
                 <ProductPage
                     minPrice={this.state.minPrice}
-                    maxPrice={this.state.maxPrice}/>
+                    maxPrice={this.state.maxPrice}
+                    updatePriceFilter={this.updatePriceFilter}/>
             </div>
         )
     }

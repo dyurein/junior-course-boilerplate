@@ -20,11 +20,7 @@ class PriceFilter extends LogRender {
         const minPriceData = minPriceParsed !== null ? minPriceParsed : this.props.minPrice;
         const maxPriceData = maxPriceParsed !== null ? maxPriceParsed : this.props.maxPrice;
         
-        this.setState({
-            minPrice: minPriceData,
-            maxPrice: maxPriceData
-        })
-        
+        this.props.updatePriceFilter(minPriceData, maxPriceData);
     }
 
     priceParse(price) {
@@ -67,12 +63,12 @@ class PriceFilter extends LogRender {
             </form> 
         )
     }
-    debug
 }
 
 PriceFilter.propTypes = {
     minPrice: pt.number.isRequired,
     maxPrice: pt.number.isRequired,
+    updatePriceFilter: pt.func.isRequired
 };
 
 export default PriceFilter;
