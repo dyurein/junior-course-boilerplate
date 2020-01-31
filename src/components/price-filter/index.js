@@ -11,22 +11,31 @@ class PriceFilter extends LogRender {
         this.refMinPrice = React.createRef();
         this.refMaxPrice = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+        this.originalMinPrice = this.props.minPrice;
+        this.originalMaxPrice = this.props.maxPrice;
     }
     
     handleSubmit(event) {
         event.preventDefault();
         const minPriceParsed = this.priceParse(this.refMinPrice.current.value);
         const maxPriceParsed = this.priceParse(this.refMaxPrice.current.value);
-        const minPriceData = minPriceParsed !== null ? minPriceParsed : this.props.minPrice;
-        const maxPriceData = maxPriceParsed !== null ? maxPriceParsed : this.props.maxPrice;
-        
-        this.props.updatePriceFilter(minPriceData, maxPriceData);
+        minPriceParsed !== null || maxPriceParsed !== null
+        ?
+        this.props.updatePriceFilter(minPriceParsed, maxPriceParsed)
+        :
+        this.props.updatePriceFilter(this.originalMinPrice, this.originalMaxPrice);
+        this.handleReset(event);
+    }
+
+    handleReset(event) {
+        event.target.reset();
     }
 
     priceParse(price) {
         const string = price.replace(/\D/, '');
         const toNumberPrice = Number(string);
-        if (price.length === 0 || toNumberPrice < 0) {
+        if (price.length === 0 || isNaN(toNumberPrice) || toNumberPrice < 0) {
             return null;
         }
 
@@ -66,9 +75,9 @@ class PriceFilter extends LogRender {
 }
 
 PriceFilter.propTypes = {
-    minPrice: pt.number.isRequired,
-    maxPrice: pt.number.isRequired,
-    updatePriceFilter: pt.func.isRequired
+    minPrice: pt.number,
+    maxPrice: pt.number,
+    updatePriceFilter: pt.func
 };
 
 export default PriceFilter;
