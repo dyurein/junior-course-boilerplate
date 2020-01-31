@@ -7,7 +7,7 @@ import PriceFilter from '../../components/price-filter';
 import List from '../../components/list';
 
 
-class ProductPage extends React.Component {
+class ProductsPage extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -32,11 +32,11 @@ class ProductPage extends React.Component {
     }
 }
 
-ProductPage.propTypes = {
+ProductsPage.propTypes = {
     isFilled: pt.bool,
     updatePriceFilter: pt.func,
     minPrice: pt.number,
     maxPrice: pt.number
 };
 
-export default ProductPage;
+export default ProductsPage;

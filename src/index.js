@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProductPage from './pages/products';
+import ProductsPage from './pages/products';
 import s from './index.module.css';
 import products from './products.json';
 
@@ -33,7 +33,7 @@ class App extends React.Component {
     render() {
         return (
             <div className={s.wrapper}>
-                <ProductPage
+                <ProductsPage
                     minPrice={this.state.minPrice}
                     maxPrice={this.state.maxPrice}
                     updatePriceFilter={this.updatePriceFilter}/>
