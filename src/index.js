@@ -18,12 +18,6 @@ class App extends React.Component {
     }
 
     updatePriceFilter = (minPrice, maxPrice) => {
-        // if (minPrice === undefined) {
-        //     minPrice = this.state.minPrice;
-        // } else if (maxPrice === undefined) {
-        //     maxPrice = this.state.maxPrice;
-        // }
-
         this.setState({
             minPrice: minPrice,
             maxPrice: maxPrice
