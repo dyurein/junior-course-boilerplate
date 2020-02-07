@@ -11,32 +11,24 @@ class PriceFilter extends LogRender {
         this.refMinPrice = React.createRef();
         this.refMaxPrice = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleReset = this.handleReset.bind(this);
         this.originalMinPrice = this.props.minPrice;
         this.originalMaxPrice = this.props.maxPrice;
     }
     
     handleSubmit(event) {
         event.preventDefault();
-        const minPriceParsed = this.priceParse(this.refMinPrice.current.value);
-        const maxPriceParsed = this.priceParse(this.refMaxPrice.current.value);
-        minPriceParsed !== null || maxPriceParsed !== null
-        ?
-        this.props.updatePriceFilter(minPriceParsed, maxPriceParsed)
-        :
-        this.props.updatePriceFilter(this.originalMinPrice, this.originalMaxPrice);
-        this.handleReset(event);
+        const minPriceParsed = this.priceParse(this.refMinPrice.current.value, this.originalMinPrice);
+        const maxPriceParsed = this.priceParse(this.refMaxPrice.current.value, this.originalMaxPrice);
+        this.props.updatePriceFilter(minPriceParsed, maxPriceParsed);
+        this.refMinPrice.current.value = minPriceParsed;
+        this.refMaxPrice.current.value = maxPriceParsed;
     }
 
-    handleReset(event) {
-        event.target.reset();
-    }
-
-    priceParse(price) {
+    priceParse(price, defaultPrice) {
         const string = price.replace(/\D/, '');
         const toNumberPrice = Number(string);
         if (price.length === 0 || isNaN(toNumberPrice) || toNumberPrice < 0) {
-            return null;
+            return defaultPrice;
         }
 
         return toNumberPrice;
@@ -48,11 +40,11 @@ class PriceFilter extends LogRender {
                 <h2 className={s.title}>Цена</h2>
                 <div className={s.prices}>
                     <div className={s.price}>
-                        <label className={s.rangeText} htmlFor="minPrice">от</label>
+                        <label className={s.rangeText} htmlFor="min-price">от</label>
                         <input
                             className={s.rangePrice}
                             id="min-price"
-                            defaultValue={this.props.minPrice}
+                            defaultValue={this.originalMinPrice}
                             ref={this.refMinPrice}
                             type="text"
                         />
@@ -62,7 +54,7 @@ class PriceFilter extends LogRender {
                         <input
                             className={s.rangePrice}
                             id="max-price"
-                            defaultValue={this.props.maxPrice}
+                            defaultValue={this.originalMaxPrice}
                             type="text"
                             ref={this.refMaxPrice}
                         />
