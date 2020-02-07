@@ -1,37 +1,42 @@
 import React from 'react';
 import ProductList from '../../components/product-list';
 import PageTitle from '../../components/title';
-import data from '../../products.json';
 import s from './index.module.css';
-import ProductItem from 'school-product-card';
+import pt from 'prop-types';
+import PriceFilter from '../../components/price-filter';
+import List from '../../components/list';
 
 
-const ratingComponent = ({ isFilled }) => {
-    return <div className={isFilled ? 'starFill' : undefined} />;
-};
+class ProductsPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-const ProductPage = () => {
-    return (
-        <>
-            <PageTitle title={'Список товаров'}/>
-            <ProductList>
-            {data.map((item)=>
-                <div className={s.itemWrapper}>
-                    <ProductItem isInStock={item.isInStock}
-                                img={item.imgProduct}
-                                title={item.name}
-                                key={item.id}
-                                price={item.price}
-                                subPriceContent={item.subPriceContent}
-                                maxRating={5}
-                                rating={4}
-                                ratingComponent={ratingComponent}
-                    />
+    render() {
+        return (
+            <>
+                <PageTitle title={'Список товаров'}/>
+                <div className={s.contentWrapper}>
+                    <PriceFilter
+                        minPrice={this.props.minPrice}
+                        maxPrice={this.props.maxPrice}
+                        updatePriceFilter={this.props.updatePriceFilter}/>
+                    <ProductList>
+                        <List
+                            minPrice={this.props.minPrice}
+                            maxPrice={this.props.maxPrice}/>
+                    </ProductList>
                 </div>
-            )}
-            </ProductList>
-        </>
-    )
+            </> 
+        )
+    }
+}
+
+ProductsPage.propTypes = {
+    isFilled: pt.bool,
+    updatePriceFilter: pt.func,
+    minPrice: pt.number,
+    maxPrice: pt.number
 };
 
-export default ProductPage;
+export default ProductsPage;
