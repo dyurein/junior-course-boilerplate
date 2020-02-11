@@ -1,21 +1,25 @@
 import React from 'react';
 import s from './index.module.css';
+import pt from 'prop-types';
 import products from '../../products.json';
 import ProductItem from 'csssr-school-product-card';
 import LogRender from '../log-render';
+import { formatMoney } from 'csssr-school-utils';
+
 
 const ratingComponent = ({ isFilled }) => {
     return <div className={isFilled ? 'starFill' : ''} />
 };
 
 class List extends LogRender {
-    constructor(props) {
-        super(props);
+    formatPrice = (number) => {
+        return formatMoney(number, 0, '.', ' ') + ' ₽';
     }
-
+    
     render() {
-        const filteredProducts = products.filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice);
-        
+        const filteredProducts = products
+        .filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice)
+        .filter(item => this.props.discount >= 0 && this.props.discount <= (100 - (item.price * 100 / item.subPrice))); //задаваемая скидка и ниже
         return (
             <>
             {filteredProducts.map((item, index) => 
@@ -24,8 +28,8 @@ class List extends LogRender {
                         key={item.id}
                         title={item.name}
                         img={item.imgProduct}
-                        price={item.price + '₽' + '  '}
-                        subPriceContent={item.subPrice + '₽'}
+                        price={this.formatPrice(item.price)}
+                        subPriceContent={this.formatPrice(item.subPrice)}
                         isInStock={item.isInStock}
                         rating={item.rating}
                         maxRating={item.maxRating}
@@ -37,5 +41,12 @@ class List extends LogRender {
         )
     }
 }
+
+List.propTypes = {
+    minPrice: pt.number,
+    maxPrice: pt.number,
+    discount: pt.number,
+    updatePriceFilter: pt.func
+};
 
 export default List;
