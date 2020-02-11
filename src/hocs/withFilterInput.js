@@ -30,7 +30,7 @@ export default function withFilterInput(Component) {
                 })
 
                 this.props.onChange(value);
-            };
+            }
 
             render() {
                 return (
@@ -39,6 +39,6 @@ export default function withFilterInput(Component) {
                         value={this.state.value}
                         onChange={this.handlePriceChange} />
                 )
-            };
-    }
+            }
+    };
 }

@@ -6,7 +6,6 @@ import ProductItem from 'csssr-school-product-card';
 import LogRender from '../log-render';
 import { formatMoney } from 'csssr-school-utils';
 
-
 const ratingComponent = ({ isFilled }) => {
     return <div className={isFilled ? 'starFill' : ''} />
 };
