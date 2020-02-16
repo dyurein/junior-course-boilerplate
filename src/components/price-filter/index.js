@@ -10,23 +10,15 @@ const FilterDiscount = withFilterInput(Discount);
 
 class PriceFilter extends LogRender {
 
-    constructor(props) {
-        super(props);
-
-        this.handleMinPriceChange = this.handleMinPriceChange.bind(this);
-        this.handleMaxPriceChange = this.handleMaxPriceChange.bind(this);
-        this.handleDiscountChange = this.handleDiscountChange.bind(this);
-    }
-
-    handleMinPriceChange(value) {
+    handleMinPriceChange = (value) => {
         this.props.updatePriceFilter(value, this.props.maxPrice);
     }
 
-    handleMaxPriceChange(value) {
+    handleMaxPriceChange = (value) => {
         this.props.updatePriceFilter(this.props.minPrice, value);
     }
 
-    handleDiscountChange(value) {
+    handleDiscountChange = (value) => {
         this.props.updateDiscountFilter(value);
     }
 

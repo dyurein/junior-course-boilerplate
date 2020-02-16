@@ -8,9 +8,6 @@ import List from '../../components/list';
 
 
 class ProductsPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

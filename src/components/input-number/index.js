@@ -4,9 +4,6 @@ import pt from 'prop-types';
 import withFilterInput from '../../hocs/withFilterInput';
 
 class InputNumber extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

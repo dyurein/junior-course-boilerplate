@@ -5,15 +5,12 @@ export default function withFilterInput(Component) {
             constructor(props) {
                 super(props);
 
-                this.onChange = this.onChange.bind(this);
-                this.handlePriceChange = this.handlePriceChange.bind(this);
-
                 this.state = {
                     value: this.props.value
                 };
             }
 
-            handlePriceChange(event) {
+            handlePriceChange = (event) => {
                 const string = event.target.value.replace(/\D/, '');
                 const toNumberPrice = Number(string);
                 if (toNumberPrice.length === 0 || toNumberPrice < 0 || isNaN(toNumberPrice)) {
@@ -24,7 +21,7 @@ export default function withFilterInput(Component) {
                 return this.onChange(toNumberPrice);
             }
 
-            onChange(value)  {
+            onChange = (value) => {
                 this.setState({
                     value: value
                 })

@@ -17,8 +17,7 @@ class List extends LogRender {
     
     render() {
         const filteredProducts = products
-        .filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice)
-        .filter(item => this.props.discount >= 0 && this.props.discount <= (100 - (item.price * 100 / item.subPrice))); //задаваемая скидка и ниже
+            .filter(item => (this.props.discount >= 0 && this.props.discount <= (100 - (item.price * 100 / item.subPrice))) && (item.price >= this.props.minPrice && item.price <= this.props.maxPrice));
         return (
             <>
             {filteredProducts.map((item, index) => 

@@ -3,10 +3,6 @@ import pt from 'prop-types';
 import s from './index.module.css';
 
 class ProductList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <ul className={s.productList}>
