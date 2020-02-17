@@ -8,9 +8,6 @@ import List from '../../components/list';
 
 
 class ProductsPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -20,11 +17,14 @@ class ProductsPage extends React.Component {
                     <PriceFilter
                         minPrice={this.props.minPrice}
                         maxPrice={this.props.maxPrice}
-                        updatePriceFilter={this.props.updatePriceFilter}/>
+                        discount={this.props.discount}
+                        updatePriceFilter={this.props.updatePriceFilter}
+                        updateDiscountFilter={this.props.updateDiscountFilter} />
                     <ProductList>
                         <List
                             minPrice={this.props.minPrice}
-                            maxPrice={this.props.maxPrice}/>
+                            maxPrice={this.props.maxPrice}
+                            discount={this.props.discount}/>
                     </ProductList>
                 </div>
             </> 
@@ -36,7 +36,8 @@ ProductsPage.propTypes = {
     isFilled: pt.bool,
     updatePriceFilter: pt.func,
     minPrice: pt.number,
-    maxPrice: pt.number
+    maxPrice: pt.number,
+    discount: pt.number
 };
 
 export default ProductsPage;

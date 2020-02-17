@@ -1,4 +1,4 @@
-.rangeWrapper {
+.priceFilter {
   display: flex;
   flex-direction: column;
   margin-right: 48px;
@@ -7,6 +7,9 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 28px;
+}
+.pricesWrapper .title {
+  margin-top: 0;
 }
 .prices {
   display: flex;
@@ -19,20 +22,11 @@
 .price:not(:last-of-type) {
   margin-right: 16px;
 }
-.rangeText {
+.label {
   margin-right: 12px;
   font-size: 14px;
   font-weight: 600;
   line-height: 14px;
-}
-.rangePrice {
-  width: 91px;
-  height: 30px;
-  padding: 8px 16px;
-  font-size: 14px;
-  line-height: 14px;
-  color: #7e8fa4;
-  box-sizing: border-box;
 }
 .button {
   width: 100%;
@@ -44,4 +38,7 @@
   line-height: 14px;
   color: #fff;
   cursor: pointer;
+}
+.discount .label:last-of-type {
+  margin-left: 8px;
 }

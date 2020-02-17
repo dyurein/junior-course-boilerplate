@@ -13,16 +13,23 @@ class App extends React.Component {
 
         this.state = {
             minPrice: Math.min(...productPrices),
-            maxPrice: Math.max(...productPrices)
+            maxPrice: Math.max(...productPrices),
+            discount: 0
         };
     }
 
     updatePriceFilter = (minPrice, maxPrice) => {
         this.setState({
             minPrice: minPrice,
-            maxPrice: maxPrice
+            maxPrice: maxPrice,
         })
-    };
+    }
+
+    updateDiscountFilter = (discount) => {
+        this.setState({
+            discount: discount
+        })
+    }
 
     render() {
         return (
@@ -30,7 +37,9 @@ class App extends React.Component {
                 <ProductsPage
                     minPrice={this.state.minPrice}
                     maxPrice={this.state.maxPrice}
-                    updatePriceFilter={this.updatePriceFilter}/>
+                    discount={this.state.discount}
+                    updatePriceFilter={this.updatePriceFilter}
+                    updateDiscountFilter={this.updateDiscountFilter} />
             </div>
         )
     }
