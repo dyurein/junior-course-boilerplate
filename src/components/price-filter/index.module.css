@@ -42,3 +42,51 @@
 .discount .label:last-of-type {
   margin-left: 8px;
 }
+.categoriesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.categoryCheckbox {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.categoryCheckbox:checked + .categoryLabel {
+  background-color: #323c48;
+  color: #ffffff;
+}
+
+.categoryLabel {
+  padding: 8px 16px;
+  border: 1px solid #7e8fa4;
+  border-radius: 15px;
+  background-color: #fff;
+  outline: none;
+  font-size: 14px;
+  line-height: 14px;
+  color: #7e8fa4;
+  cursor: pointer;
+}
+
+.categoryLabel:not(:first-of-type) {
+  margin-left: 16px;
+}
+
+.resetFilters {
+  margin-top: 24px;
+}
+
+.resetButton {
+  width: 100%;
+  padding: 9px 0;
+  font-size: 14px;
+  line-height: 14px;
+  border: 1px solid #323c48;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
