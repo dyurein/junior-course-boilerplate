@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import s from './index.module.css';
 import ProductsPage from './pages/products';
 import products from './products.json';
+import maxBy from 'csssr-school-utils/lib/maxBy';
+import minBy from 'csssr-school-utils/lib/minBy';
 
 
 
@@ -10,17 +12,16 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
-        const productPrices = products.map(item => item.price);
         const jsonProductCategories = products.map(item => item.category);
-        const productCategories = jsonProductCategories.filter((e, i) => jsonProductCategories.indexOf(e) === i);
+        const productCategories = [...new Set(jsonProductCategories)];
 
         const url = productCategories.join(',');
         window.history.replaceState({url}, 'category', url);
 
         this.state = {
             filters: {
-                minPrice: Math.min(...productPrices),
-                maxPrice: Math.max(...productPrices),
+                minPrice: minBy(obj => obj.price, products).price,
+                maxPrice: maxBy(obj => obj.price, products).price,
                 discount: 0,
                 categories: productCategories
             },
@@ -92,22 +93,30 @@ class App extends React.Component {
     resetFilters = () => {
         this.setState({
             filters: {
-                minPrice: Math.min(...this.productPrices),
-                maxPrice: Math.max(...this.productPrices),
+                minPrice: minBy(obj => obj.price, products).price,
+                maxPrice: maxBy(obj => obj.price, products).price,
                 discount: 0,
-                categories: this.productCategories
+                categories: this.state.allCategories
             }
         })
     }
 
     render() {
-        const filteredProducts = products
-            .filter(item =>
-                (this.state.filters.discount >= 0 && this.state.filters.discount <= (100 - (item.price * 100 / item.subPrice)))
+        let {
+            filters: {
+                minPrice,
+                maxPrice,
+                discount,
+                categories,
+            }
+        } = this.state
+        const filteredProducts = products.filter(item =>
+                (discount >= 0 && discount <= (100 - (item.price * 100 / item.subPrice)))
                 &&
-                (item.price >= this.state.filters.minPrice && item.price <= this.state.filters.maxPrice)
+                (item.price >= minPrice && item.price <= maxPrice)
                 &&
-                (this.state.filters.categories.includes(item.category)));
+                (categories.includes(item.category)));
+
         return (
             <div className={s.wrapper}>
                 <ProductsPage
