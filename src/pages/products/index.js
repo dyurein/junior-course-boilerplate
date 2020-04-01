@@ -1,11 +1,10 @@
 import React from 'react';
-import ProductList from '../../components/product-list';
 import PageTitle from '../../components/title';
 import s from './index.module.css';
 import pt from 'prop-types';
-import PriceFilter from '../../components/price-filter';
-import List from '../../components/list';
-import FilterContext from '../../contexts/filter-context';
+
+import PriceFilterContainer from '../../containers/PriceFilterContainer';
+import ProductsListContainer from '../../containers/ProductsListContainer';
 
 class ProductsPage extends React.Component {
     
@@ -14,21 +13,8 @@ class ProductsPage extends React.Component {
             <>
                 <PageTitle title={'Список товаров'}/>
                 <div className={s.contentWrapper}>
-                    <FilterContext.Provider value={{
-                            filters: this.props.filters,
-                            allCategories: this.props.allCategories,
-                            filterActions: {
-                                updatePriceFilter: this.props.updatePriceFilter,
-                                updateDiscountFilter: this.props.updateDiscountFilter,
-                                updateCategoryFilter: this.props.updateCategoryFilter,
-                                resetFilters: this.props.resetFilters
-                            }
-                        }}>
-                            <PriceFilter />
-                    </FilterContext.Provider>
-                    <ProductList>
-                        <List filteredProducts={this.props.filteredProducts}/>
-                    </ProductList>
+                    <PriceFilterContainer />
+                    <ProductsListContainer />
                 </div>
             </> 
         )
